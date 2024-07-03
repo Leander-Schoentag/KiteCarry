@@ -1,0 +1,100 @@
+﻿<Window x:Class="KiteCarry.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:KiteCarry"
+        mc:Ignorable="d"
+        Title="Kite Carry" Height="512" Width="1024"
+        ResizeMode="CanMinimize">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="0" Grid.ColumnSpan="10" Background="Black" Opacity="0.7"></Border>
+        <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="10" Grid.ColumnSpan="10" Background="#FF212121" Opacity="0.6"></Border>
+        
+        <TextBlock x:Name="textBlockLeagueStatus" Grid.Row="0" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center">
+            <TextBlock.Effect>
+                <DropShadowEffect Color="#FFA1A1A1" BlurRadius="15" ShadowDepth="5"/>
+            </TextBlock.Effect>
+			<Run Text="League of Legends is running: " />
+			<Run x:Name="leagueIsRunning" Text="False" />
+        </TextBlock>
+        
+        <Label x:Name="labelCurrentPatch" Content="Patch: 11.11.1" Grid.Row="0" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Label.Effect>
+                <DropShadowEffect Color="#FFA1A1A1" BlurRadius="15" ShadowDepth="5"/>
+            </Label.Effect>
+        </Label>
+        
+        <DockPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="250" HorizontalAlignment="Center">
+            <DockPanel.Effect>
+                <DropShadowEffect BlurRadius="3" Opacity="0.5" ShadowDepth="3"/>
+            </DockPanel.Effect>
+            <Label x:Name="labelAutoKiteKey" Content="Auto Kiting Key" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"></Label>
+            <ComboBox x:Name="comboBoxAutoKiteKey" FontSize="14" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Width="250" HorizontalAlignment="Center">
+            <DockPanel.Effect>
+                <DropShadowEffect BlurRadius="3" Opacity="0.5" ShadowDepth="3"/>
+            </DockPanel.Effect>
+            <Label x:Name="labelAttackMoveClickKey" Content="Attack Move Click Key" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"></Label>
+            <ComboBox x:Name="comboBoxAttackMoveClickKey" FontSize="14" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Width="250" HorizontalAlignment="Center">
+            <DockPanel.Effect>
+                <DropShadowEffect BlurRadius="3" Opacity="0.5" ShadowDepth="3"/>
+            </DockPanel.Effect>
+            <Label x:Name="labelMoveClickKey" Content="Move Click Key" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"></Label>
+            <ComboBox x:Name="comboBoxMoveClickKey" FontSize="14" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Width="250">
+            <DockPanel.Effect>
+                <DropShadowEffect BlurRadius="3" Opacity="0.5" ShadowDepth="3"/>
+            </DockPanel.Effect>
+            <Label x:Name="labelWindUp" Content="Windup Time in %" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"></Label>
+            <TextBox Text="{Binding ElementName=sliderWindUp, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Center" HorizontalAlignment="Center" Width="40" Height="20" FontWeight="Bold" FontSize="14"/>
+            <Slider x:Name="sliderWindUp" Maximum="60" TickPlacement="BottomRight" TickFrequency="5" IsSnapToTickEnabled="True" Value="30"/>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Width="250">
+            <DockPanel.Effect>
+                <DropShadowEffect BlurRadius="3" Opacity="0.5" ShadowDepth="3"/>
+            </DockPanel.Effect>
+            <Label x:Name="labelMoveTime" Content="Move Time Multiplier" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"></Label>
+            <TextBox Text="{Binding ElementName=sliderMoveTime, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Center" HorizontalAlignment="Center" Width="40" Height="20" FontWeight="Bold" FontSize="14"/>
+            <Slider x:Name="sliderMoveTime" Minimum="1" Maximum="2" TickPlacement="BottomRight" TickFrequency="0.1" IsSnapToTickEnabled="True" Value="1.1"/>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Width="250">
+            <DockPanel.Effect>
+                <DropShadowEffect BlurRadius="3" Opacity="0.5" ShadowDepth="3"/>
+            </DockPanel.Effect>
+            <Label x:Name="labelClickDelay" Content="Click Delay in ms" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"></Label>
+            <TextBox Text="{Binding ElementName=sliderClickDelay, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Center" HorizontalAlignment="Center" Width="40" Height="20" FontWeight="Bold" FontSize="14"/>
+            <Slider x:Name="sliderClickDelay" Maximum="200" TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True" Value="150"/>
+        </DockPanel>
+        
+        <Grid.Background>
+            <ImageBrush x:Name="backgroundImage" ImageSource="/KiteCarry;component/Images/DefaultChampion.jpg" Stretch="UniformToFill"></ImageBrush>
+        </Grid.Background>
+        
+    </Grid>
+</Window>
